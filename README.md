@@ -221,6 +221,34 @@ channels:
           deny: ["bash", "write"]   # Nhóm này bị giới hạn
 ```
 
+### Per-Group System Prompt
+
+Mỗi nhóm có thể có system prompt riêng — bot sẽ hành xử khác nhau tùy nhóm (tính cách, nghiệp vụ, quyền hạn).
+
+```yaml
+channels:
+  zalo-personal:
+    groupPolicy: allowlist
+    groups:
+      "4393631161138603828":
+        allow: true
+        requireMention: true
+        systemPrompt: |
+          Bạn là HTKT, trợ lý của Tổ 4.
+          Luôn xưng hô đúng tên thật từ file DANH_SACH_NHAN_SU.csv.
+          Xử lý chấm công, phòng họp, tạo ảnh theo quy trình nội bộ.
+      "2545777777529968025":
+        allow: true
+        requireMention: true
+        systemPrompt: |
+          Bạn là HTKT, trợ lý lớp Đào tạo.
+          Chào đón học viên, KHÔNG đặt phòng trực tiếp qua chat.
+```
+
+System prompt của nhóm được inject tự động vào mỗi tin nhắn — không ảnh hưởng đến `identity.theme` của agent gốc.
+
+---
+
 ### Mention Gating (Chỉ trả lời khi @mention)
 
 Mặc định, bot chỉ trả lời trong group khi được @mention. Tin nhắn không mention sẽ được buffer để bot có ngữ cảnh khi được gọi.
@@ -265,6 +293,7 @@ Bot:  (gọi group-mention action) → Đã tắt requireMention cho group 12345
 | **Markdown** | Render markdown trong tin nhắn (hỗ trợ bảng) |
 | **Message chunking** | Tự động chia tin nhắn dài (>2000 ký tự) |
 | **DM debounce** | Gộp nhiều tin nhắn liên tiếp trong 8 giây rồi mới trả lời (tránh spam phản hồi khi nhắn ngắt quãng) |
+| **Per-group system prompt** | Mỗi nhóm có `systemPrompt` riêng trong config — bot tự động đổi tính cách/nghiệp vụ theo từng nhóm |
 
 ---
 
