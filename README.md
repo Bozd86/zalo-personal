@@ -44,7 +44,7 @@ Kiểm soát ai được nhắn tin với bot qua 4 chế độ: Pairing, Allowl
 ### Tự Động Kết Nối Lại
 Mất kết nối? Extension tự động reconnect với retry logic. Keep-alive heartbeat giữ session sống, tự động refresh credentials.
 
-> **Dự án được phát triển bằng Claude Code (AI)** và hoàn toàn miễn phí. Nếu bạn thấy hữu ích, hãy [ủng hộ tác giả](#-ủng-hộ-dự-án) để có thêm động lực duy trì và phát triển tiếp!
+> **Dự án được phát triển bằng Claude Code (AI)** và hoàn toàn miễn phí.
 
 ---
 
@@ -141,7 +141,7 @@ Mất kết nối? Extension tự động reconnect với retry logic. Keep-aliv
 | `send-sticker` | Gửi sticker |
 
 <p align="center">
-  <sub><em>141 actions và vẫn đang phát triển thêm — được xây dựng nhờ Claude Code AI. <a href="#-ủng-hộ-dự-án">Ủng hộ</a> để tăng tốc phát triển!</em></sub>
+  <sub><em>141 actions và vẫn đang phát triển thêm — được xây dựng nhờ Claude Code AI.</em></sub>
 </p>
 
 ---
@@ -248,7 +248,7 @@ User: "Tắt chế độ mention cho nhóm này"
 Bot:  (gọi group-mention action) → Đã tắt requireMention cho group 123456
 ```
 
-**Context buffering:** Khi bot không được mention, tin nhắn vẫn được lưu tạm (tối đa 50 tin, 4 giờ). Khi được @mention, bot sẽ có đầy đủ ngữ cảnh cuộc trò chuyện để trả lời chính xác.
+**Context buffering:** Khi bot không được mention, tin nhắn vẫn được lưu tạm (tối đa 50 tin, không giới hạn thời gian). Khi được @mention, bot sẽ có đầy đủ ngữ cảnh cuộc trò chuyện để trả lời chính xác — kể cả sau khi nghỉ qua đêm.
 
 ---
 
@@ -262,6 +262,7 @@ Bot:  (gọi group-mention action) → Đã tắt requireMention cho group 12345
 | **Multi-account** | Hỗ trợ nhiều tài khoản Zalo đồng thời |
 | **Markdown** | Render markdown trong tin nhắn (hỗ trợ bảng) |
 | **Message chunking** | Tự động chia tin nhắn dài (>2000 ký tự) |
+| **DM debounce** | Gộp nhiều tin nhắn liên tiếp trong 8 giây rồi mới trả lời (tránh spam phản hồi khi nhắn ngắt quãng) |
 
 ---
 
