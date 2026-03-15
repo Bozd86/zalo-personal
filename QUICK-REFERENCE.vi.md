@@ -4,13 +4,13 @@
 
 ```bash
 # Cài mới hoặc cài lại (tự động detect và hỏi bạn)
-bash <(curl -fsSL https://raw.githubusercontent.com/caochitam/zalo-personal/main/quick-install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/Bozd86/zalo-personal/main/quick-install.sh)
 
 # Cập nhật lên version mới nhất
-bash <(curl -fsSL https://raw.githubusercontent.com/caochitam/zalo-personal/main/script/update.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/Bozd86/zalo-personal/main/script/update.sh)
 
 # Gỡ cài đặt
-bash <(curl -fsSL https://raw.githubusercontent.com/caochitam/zalo-personal/main/script/uninstall.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/Bozd86/zalo-personal/main/script/uninstall.sh)
 ```
 
 ## Lệnh cơ bản
@@ -267,7 +267,7 @@ openclaw security audit --fix
 - Báo lỗi, request tính năng
 - Cập nhật phiên bản mới
 
-🐛 **GitHub Issues:** https://github.com/caochitam/zalo-personal/issues
+🐛 **GitHub Issues:** https://github.com/Bozd86/zalo-personal/issues
 
 ---
 

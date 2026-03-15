@@ -1,6 +1,6 @@
 #!/bin/bash
 # Zalo Personal Extension - Uninstall Script
-# Usage: bash <(curl -fsSL https://raw.githubusercontent.com/caochitam/zalo-personal/main/script/uninstall.sh)
+# Usage: bash <(curl -fsSL https://raw.githubusercontent.com/Bozd86/zalo-personal/main/script/uninstall.sh)
 
 set -e
 
@@ -194,8 +194,8 @@ echo "────────────────────────�
 echo "🎉 Hoàn tất! Zalo Personal đã được gỡ bỏ hoàn toàn."
 echo ""
 echo "📚 Nếu bạn muốn cài lại sau:"
-echo "   bash <(curl -fsSL https://raw.githubusercontent.com/caochitam/zalo-personal/main/quick-install.sh)"
+echo "   bash <(curl -fsSL https://raw.githubusercontent.com/Bozd86/zalo-personal/main/quick-install.sh)"
 echo ""
 echo "💬 Góp ý hoặc báo lỗi:"
-echo "   https://github.com/caochitam/zalo-personal/issues"
+echo "   https://github.com/Bozd86/zalo-personal/issues"
 echo ""

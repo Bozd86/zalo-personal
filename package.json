@@ -4,7 +4,7 @@
   "description": "OpenClaw extension for Zalo Personal Account via zca-js library. Login via QR code, no CLI tools needed. Works with OpenClaw 2026.2+",
   "type": "module",
   "main": "./index.ts",
-  "author": "caochitam <caochitam@gmail.com>",
+  "author": "Bozd86",
   "license": "MIT",
   "keywords": [
     "openclaw",
@@ -18,12 +18,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caochitam/zalo-personal.git"
+    "url": "git+https://github.com/Bozd86/zalo-personal.git"
   },
   "bugs": {
-    "url": "https://github.com/caochitam/zalo-personal/issues"
+    "url": "https://github.com/Bozd86/zalo-personal/issues"
   },
-  "homepage": "https://github.com/caochitam/zalo-personal#readme",
+  "homepage": "https://github.com/Bozd86/zalo-personal#readme",
   "files": [
     "src/",
     "script/",
@@ -36,7 +36,7 @@
     "openclaw.plugin.json",
     "index.ts",
     "zalo-group.jpg",
-    "momo-caochitam.jpg"
+    "zalo-group.jpg"
   ],
   "scripts": {},
   "peerDependencies": {

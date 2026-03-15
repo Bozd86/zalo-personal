@@ -1,6 +1,6 @@
 #!/bin/bash
 # Zalo Personal Extension - Update Script
-# Usage: bash <(curl -fsSL https://raw.githubusercontent.com/caochitam/zalo-personal/main/script/update.sh)
+# Usage: bash <(curl -fsSL https://raw.githubusercontent.com/Bozd86/zalo-personal/main/script/update.sh)
 
 set -e
 
@@ -30,7 +30,7 @@ if [ ! -d "$EXT_DIR" ]; then
     echo "❌ Plugin zalo-personal chưa được cài đặt!"
     echo ""
     echo "📥 Vui lòng cài đặt plugin trước:"
-    echo "   bash <(curl -fsSL https://raw.githubusercontent.com/caochitam/zalo-personal/main/quick-install.sh)"
+    echo "   bash <(curl -fsSL https://raw.githubusercontent.com/Bozd86/zalo-personal/main/quick-install.sh)"
     exit 1
 fi
 
@@ -181,7 +181,7 @@ if [ $INSTALL_EXIT_CODE -ne 0 ]; then
     echo "🔍 Có thể thử:"
     echo "  1. Kiểm tra internet connection"
     echo "  2. Chạy: openclaw doctor --fix"
-    echo "  3. Báo lỗi: https://github.com/caochitam/zalo-personal/issues"
+    echo "  3. Báo lỗi: https://github.com/Bozd86/zalo-personal/issues"
     exit 1
 fi
 
@@ -256,8 +256,8 @@ echo "────────────────────────�
 echo "🎉 Hoàn tất! Zalo Personal đã được cập nhật."
 echo ""
 echo "📚 Xem changelog tại:"
-echo "   https://github.com/caochitam/zalo-personal/releases"
+echo "   https://github.com/Bozd86/zalo-personal/releases"
 echo ""
 echo "💬 Góp ý hoặc báo lỗi:"
-echo "   https://github.com/caochitam/zalo-personal/issues"
+echo "   https://github.com/Bozd86/zalo-personal/issues"
 echo ""

@@ -5,7 +5,6 @@
 [![npm version](https://img.shields.io/npm/v/zalo-personal)](https://www.npmjs.com/package/zalo-personal)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.2%2B-orange)](https://openclaw.ai)
-[![Ủng hộ](https://img.shields.io/badge/%E2%98%95%20%E1%BB%A6ng%20h%E1%BB%99-MoMo%20%2F%20Ng%C3%A2n%20h%C3%A0ng-ff69b4)](#-ủng-hộ-dự-án)
 
 ```
 Zalo App  <-->  zalo-personal extension  <-->  OpenClaw AI  <-->  Bạn
@@ -18,17 +17,12 @@ Zalo App  <-->  zalo-personal extension  <-->  OpenClaw AI  <-->  Bạn
 ## Cài Đặt Nhanh
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/caochitam/zalo-personal/main/quick-install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/Bozd86/zalo-personal/main/quick-install.sh)
 ```
 
 Script tự động cài extension, hiện QR code để đăng nhập, và restart gateway. Không cần cấu hình thủ công.
 
 Đã cài rồi? Chạy lại script để cập nhật hoặc cấu hình lại.
-
-<p align="center">
-  <sub>Dự án này miễn phí và được duy trì nhờ sự ủng hộ của cộng đồng</sub><br/>
-  <a href="#-ủng-hộ-dự-án"><img src="https://raw.githubusercontent.com/caochitam/zalo-personal/main/momo-caochitam.jpg" alt="Ủng hộ qua MoMo / Ngân hàng" width="180" /></a>
-</p>
 
 ---
 
@@ -282,7 +276,7 @@ openclaw plugins install zalo-personal
 ### Từ source code (development)
 
 ```bash
-git clone https://github.com/caochitam/zalo-personal.git
+git clone https://github.com/Bozd86/zalo-personal.git
 cd zalo-personal
 npm install
 openclaw plugins install --link .
@@ -298,13 +292,13 @@ openclaw channels login --channel zalo-personal
 ### Cập nhật
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/caochitam/zalo-personal/main/script/update.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/Bozd86/zalo-personal/main/script/update.sh)
 ```
 
 ### Gỡ cài đặt
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/caochitam/zalo-personal/main/script/uninstall.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/Bozd86/zalo-personal/main/script/uninstall.sh)
 ```
 
 ---
@@ -334,7 +328,7 @@ openclaw channels login --channel zp
 openclaw gateway restart
 ```
 
-> Gặp vấn đề khác? [Mở issue trên GitHub](https://github.com/caochitam/zalo-personal/issues) — tác giả hỗ trợ nhanh nhờ Claude Code AI.
+> Gặp vấn đề khác? [Mở issue trên GitHub](https://github.com/Bozd86/zalo-personal/issues) — tác giả hỗ trợ nhanh nhờ Claude Code AI.
 
 ---
 
@@ -350,27 +344,6 @@ openclaw gateway restart
 
 ---
 
-## Ủng Hộ Dự Án
-
-Dự án **zalo-personal** được phát triển và duy trì bởi một developer cá nhân, với sự hỗ trợ của **Claude Code** (AI) để tăng tốc phát triển tính năng mới và vá lỗi nhanh cho cộng đồng.
-
-Chi phí vận hành Claude Code, server test, và thời gian phát triển đều từ túi cá nhân. Nếu extension này giúp ích cho bạn, hãy cân nhắc ủng hộ để dự án tiếp tục được phát triển:
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/caochitam/zalo-personal/main/momo-caochitam.jpg" alt="Ủng hộ qua MoMo / Ngân hàng" width="300" />
-</p>
-
-<p align="center">
-  <strong>CAO CHÍ TÂM</strong><br/>
-  <em>Quét mã QR bằng MoMo, app ngân hàng, hoặc ví điện tử hỗ trợ VietQR / Napas 247</em>
-</p>
-
-Mọi đóng góp dù nhỏ đều giúp:
-- Duy trì chi phí **Claude Code** để phát triển và hỗ trợ nhanh hơn
-- Thêm tính năng mới theo yêu cầu cộng đồng
-- Vá lỗi và cập nhật kịp thời khi Zalo thay đổi API
-- Viết tài liệu và hỗ trợ người dùng mới
-
 ---
 
 ## Đóng Góp Mã Nguồn
@@ -384,8 +357,7 @@ Mọi đóng góp dù nhỏ đều giúp:
 
 ## Liên Hệ
 
-- **GitHub Issues:** https://github.com/caochitam/zalo-personal/issues
-- **Email:** caochitam@gmail.com
+- **GitHub Issues:** https://github.com/Bozd86/zalo-personal/issues
 
 ---
 
@@ -406,7 +378,5 @@ MIT License — xem [LICENSE](LICENSE)
 ---
 
 <p align="center">
-  <strong>Made with care by caochitam</strong> | <em>Powered by OpenClaw + zca-js + Claude Code</em><br/><br/>
-  <a href="#-ủng-hộ-dự-án"><img src="https://raw.githubusercontent.com/caochitam/zalo-personal/main/momo-caochitam.jpg" alt="Ủng hộ" width="160" /></a><br/>
-  <sub>Thích dự án này? Quét mã QR để ủng hộ tác giả duy trì và phát triển tiếp!</sub>
+  <strong>Forked & maintained by Bozd86</strong> | <em>Powered by OpenClaw + zca-js + Claude Code</em>
 </p>

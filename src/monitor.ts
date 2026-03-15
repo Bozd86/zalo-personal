@@ -43,15 +43,20 @@ const groupMessageBuffer = new Map<string, Array<{
   timestamp: number;
 }>>();
 const GROUP_BUFFER_MAX_MESSAGES = 50;
-const GROUP_BUFFER_MAX_AGE_S = 4 * 60 * 60; // 4 hours
 
 function bufferGroupMessage(groupId: string, entry: { senderName: string; content: string; timestamp: number }): void {
-  let buffer = groupMessageBuffer.get(groupId) ?? [];
+  const buffer = groupMessageBuffer.get(groupId) ?? [];
   buffer.push(entry);
-  const cutoff = Math.floor(Date.now() / 1000) - GROUP_BUFFER_MAX_AGE_S;
-  buffer = buffer.filter(m => m.timestamp > cutoff).slice(-GROUP_BUFFER_MAX_MESSAGES);
+  // Keep only the last N messages; no time-based expiry so context survives overnight
+  if (buffer.length > GROUP_BUFFER_MAX_MESSAGES) {
+    buffer.splice(0, buffer.length - GROUP_BUFFER_MAX_MESSAGES);
+  }
   groupMessageBuffer.set(groupId, buffer);
 }
+
+// --- DM debounce: batch rapid consecutive messages from same sender ---
+const DM_DEBOUNCE_MS = 8000; // 8 seconds
+const dmDebounceMap = new Map<string, { timer: ReturnType<typeof setTimeout>; messages: ZaloPersonalMessage[] }>();
 
 function consumeGroupBuffer(groupId: string): string {
   const buffer = groupMessageBuffer.get(groupId);
@@ -1191,9 +1196,49 @@ export async function monitorZaloPersonalProvider(
 
         logVerbose(core, runtime, `[${account.accountId}] inbound message`);
         statusSink?.({ lastInboundAt: Date.now() });
-        processMessage(converted, account, config, core, runtime, statusSink).catch((err) => {
-          runtime.error(`[${account.accountId}] Failed to process message: ${String(err)}`);
-        });
+
+        const isDm = !(converted.metadata?.isGroup ?? false);
+        if (isDm) {
+          // DM debounce: wait DM_DEBOUNCE_MS then process all buffered messages as one
+          const senderId = converted.metadata?.fromId ?? converted.threadId;
+          const key = `${account.accountId}:${senderId}`;
+          const existing = dmDebounceMap.get(key);
+          if (existing) {
+            clearTimeout(existing.timer);
+            existing.messages.push(converted);
+            existing.timer = setTimeout(() => {
+              dmDebounceMap.delete(key);
+              const msgs = existing.messages;
+              if (msgs.length === 0) return;
+              const merged: ZaloPersonalMessage = msgs.length === 1 ? msgs[0] : {
+                ...msgs[msgs.length - 1],
+                content: msgs.map(m => m.content).join("\n"),
+              };
+              processMessage(merged, account, config, core, runtime, statusSink).catch((err) => {
+                runtime.error(`[${account.accountId}] Failed to process message: ${String(err)}`);
+              });
+            }, DM_DEBOUNCE_MS);
+          } else {
+            const entry = { timer: null as unknown as ReturnType<typeof setTimeout>, messages: [converted] };
+            dmDebounceMap.set(key, entry);
+            entry.timer = setTimeout(() => {
+              dmDebounceMap.delete(key);
+              const msgs = entry.messages;
+              if (msgs.length === 0) return;
+              const merged: ZaloPersonalMessage = msgs.length === 1 ? msgs[0] : {
+                ...msgs[msgs.length - 1],
+                content: msgs.map(m => m.content).join("\n"),
+              };
+              processMessage(merged, account, config, core, runtime, statusSink).catch((err) => {
+                runtime.error(`[${account.accountId}] Failed to process message: ${String(err)}`);
+              });
+            }, DM_DEBOUNCE_MS);
+          }
+        } else {
+          processMessage(converted, account, config, core, runtime, statusSink).catch((err) => {
+            runtime.error(`[${account.accountId}] Failed to process message: ${String(err)}`);
+          });
+        }
       });
 
       api.listener.on("friend_event", (event: FriendEvent) => {
