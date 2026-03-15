@@ -605,6 +605,8 @@ async function processMessage(
     bodyForEnvelope = `${bodyWithSender}\n\n${mediaInfo}`;
   }
 
+  const groupSystemPrompt = isGroup ? resolveGroupSystemPrompt(account, chatId) : undefined;
+
   const body = core.channel.reply.formatAgentEnvelope({
     channel: "Zalo JS",
     from: fromLabel,
@@ -614,8 +616,10 @@ async function processMessage(
     body: bodyForEnvelope,
   });
 
+  const finalBody = groupSystemPrompt ? `[System]\n${groupSystemPrompt}\n[/System]\n\n${body}` : body;
+
   const ctxPayload = core.channel.reply.finalizeInboundContext({
-    Body: body,
+    Body: finalBody,
     RawBody: rawBody,
     CommandBody: rawBody,
     From: isGroup ? `'zalo-personal':group:${chatId}` : `'zalo-personal':${senderId}`,
@@ -811,6 +815,18 @@ function resolveGroupMentionSetting(account: ResolvedZaloPersonalAccount, groupI
     }
   }
   return true; // default: require mention in groups
+}
+
+function resolveGroupSystemPrompt(account: ResolvedZaloPersonalAccount, groupId: string): string | undefined {
+  const groups = account.config.groups ?? {};
+  const candidates = [groupId, `group:${groupId}`];
+  for (const key of candidates) {
+    const entry = groups[key];
+    if (entry && typeof entry.systemPrompt === "string" && entry.systemPrompt.trim()) {
+      return entry.systemPrompt.trim();
+    }
+  }
+  return undefined;
 }
 
 const THINKING_TAG_RE = /^\s*<(?:think|thinking|thought|antthinking)\b[^>]*>/i;

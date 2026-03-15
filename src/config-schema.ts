@@ -10,6 +10,7 @@ const groupConfigSchema = z.object({
   requireMention: z.boolean().optional(),
   denyUsers: z.array(denyFromEntry).optional(),
   tools: ToolPolicySchema,
+  systemPrompt: z.string().optional(),
 });
 
 const zaloPersonalAccountSchema = z.object({

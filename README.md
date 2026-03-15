@@ -208,15 +208,17 @@ Bot:  Đã chặn Bob (ID: 123456). Restart gateway để áp dụng.
 ### Tool Policy Theo Nhóm
 
 ```yaml
-groups:
-  "Nhóm Admin":
-    allow: true
-    tools:
-      allow: ["*"]              # Nhóm này được dùng tất cả tools
-  "Nhóm Khách":
-    allow: true
-    tools:
-      deny: ["bash", "write"]   # Nhóm này bị giới hạn
+channels:
+  zalo-personal:
+    groups:
+      "Nhóm Admin":
+        allow: true
+        tools:
+          allow: ["*"]              # Nhóm này được dùng tất cả tools
+      "Nhóm Khách":
+        allow: true
+        tools:
+          deny: ["bash", "write"]   # Nhóm này bị giới hạn
 ```
 
 ### Mention Gating (Chỉ trả lời khi @mention)
@@ -329,7 +331,7 @@ openclaw channels login --channel zp
 openclaw gateway restart
 ```
 
-> Gặp vấn đề khác? [Mở issue trên GitHub](https://github.com/Bozd86/zalo-personal/issues) — tác giả hỗ trợ nhanh nhờ Claude Code AI.
+> Gặp vấn đề khác? [Mở issue trên GitHub](https://github.com/Bozd86/zalo-personal/issues)
 
 ---
 
@@ -342,8 +344,6 @@ openclaw gateway restart
 | **TypeScript** | Type-safe development |
 | **sharp** | Xử lý metadata hình ảnh |
 | **Claude Code** | AI-assisted development |
-
----
 
 ---
 
